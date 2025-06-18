@@ -1,0 +1,64 @@
+.outcomeBtn {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+
+    max-width: 100%;
+    width: 100%;
+    min-width: 0;
+
+    padding: 0.5em 0.75em;
+
+    border: none;
+    border-radius: 0.25rem;
+    background-color: rgb(7, 24, 36);
+
+    font-size: 0.875rem;
+    color: #fff;
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition: background 0.2s;
+}
+
+.outcomeBtn:not(.outcomeBtn--active):hover {
+    background-color: rgb(8, 47, 90);
+}
+
+.outcomeBtn--active {
+    background-color: rgb(20, 117, 225);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .2), 0 4px 6px -2px rgba(0, 0, 0, .1);
+}
+
+.outcomeTeamName {
+    display: inline-block;
+
+    font-weight: 600;
+    line-height: 1.5;
+
+    color: #fff;
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
+
+
+}
+
+.outcomePrice {
+    color: #4391e7;
+    font-weight: 700;
+    line-height: 1.5;
+
+    white-space: nowrap;
+    overflow: hidden;
+
+    max-width: 100%;
+}
+
+/* .outcomeBtn--active:hover {
+    background-color: rgb(20, 117, 225);
+} */

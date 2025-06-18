@@ -1,0 +1,84 @@
+.sportListItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+
+
+    width: 65px;
+    max-width: 65px;
+    height: auto;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #b1bad3;
+    background-color: transparent;
+    border: none;
+
+    transition: all cubic-bezier(.4, 0, .2, 1) 0.15s;
+}
+
+.sportListItem:hover {
+    color: #fff;
+}
+
+.sportListItem--selected {
+    color: #fff;
+}
+
+.selectedDecorator {
+    display: block;
+    content: "";
+    background: rgb(20, 117, 225);
+    width: 12px;
+    height: 6px;
+    position: absolute;
+    top: calc(-1 * 2rem);
+    left: 50%;
+    z-index: 1;
+    transform: translate(-50%);
+    border-radius: 0 0 100% 100%;
+}
+
+.iconWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    flex-shrink: 0;
+
+    font-size: 28px;
+
+    pointer-events: none;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+}
+
+.matchCount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -5px;
+    right: 0px;
+
+    padding: 0 0.5em;
+    min-width: 1.8em;
+    border-radius: 2em;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.5;
+
+    color: inherit;
+    background-color: rgb(7, 24, 36);
+}
+
+.matchCount--selected {
+    background-color: rgb(67, 145, 231);
+    color: rgb(4, 23, 45);
+}

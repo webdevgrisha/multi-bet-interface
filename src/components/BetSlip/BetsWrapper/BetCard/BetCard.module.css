@@ -1,0 +1,209 @@
+.betCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    width: 100%;
+
+    border-radius: 0.25rem;
+    color: rgb(177, 186, 211);
+    font-size: 0.875rem;
+    overflow: hidden;
+
+    background-color: rgb(26, 44, 56);
+
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+
+    padding: 0.5rem 0.75rem;
+
+    color: #b1bad3;
+    background-color: rgb(47, 69, 83);
+}
+
+.teamNames {
+    display: inline-flex;
+    width: 100%;
+    max-width: calc(100% - 3rem);
+    align-items: center;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.deleteBetBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+
+    padding: 0;
+    border: none;
+
+    background-color: transparent;
+
+    color: inherit;
+    stroke: currentColor;
+    fill: currentColor;
+
+    cursor: pointer;
+
+    max-height: 1rem;
+
+    transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+}
+
+.deleteBetBtn svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.deleteBetBtn:hover {
+    color: #fff;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    width: 100%;
+
+    padding: 0.5rem 0.75rem;
+
+    box-shadow: 0 4px 6px -1px rgba(27, 23, 23, .2), 0 2px 4px -1px rgba(0, 0, 0, .12);
+}
+
+.matchType {
+    display: inline-flex;
+    font-size: 0.875rem;
+    font-weight: 400;
+
+    width: 100%;
+}
+
+.outcomeInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+}
+
+.betTeamName {
+    color: #fff;
+    line-height: 1.5;
+
+    font-size: 0.875rem;
+    font-weight: 650;
+}
+
+.betPrice {
+    color: rgb(67, 145, 231);
+    line-height: 1.5;
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+
+.stakeBlock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.inputWrapper {
+    display: flex;
+    position: relative;
+    /* max-width: 50%; */
+    width: 45%;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 2px 0 rgba(0, 0, 0, .12);
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+
+.euroSign {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0.75rem;
+    height: 100%;
+
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(255, 157, 0);
+
+}
+
+.stakeInput {
+    width: 100%;
+    padding: 0.5em;
+    padding-right: 2rem;
+    background-color: rgb(15, 33, 46);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    letter-spacing: 0;
+
+    border: 2px solid rgb(47, 69, 83);
+}
+
+.stakeInput:disabled {
+    background-color: rgb(35, 48, 58);
+    border-color: rgb(60, 70, 80);
+    color: rgb(120, 130, 140);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.stakeInputError {
+    border-color: #ff4d4f !important;
+    background-color: rgba(255, 0, 0, 0.05);
+    color: #ff4d4f;
+    outline: none;
+    box-shadow: 0 0 0 1px rgba(255, 77, 79, 0.4);
+}
+
+.estPayoutWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    height: 100%;
+
+    color: rgb(177, 186, 211);
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+.estPayoutText {
+    font-size: 0.75rem;
+
+}
+
+.estPayout {
+    display: inline-flex;
+    max-width: 12ch;
+    font-size: 0.875rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

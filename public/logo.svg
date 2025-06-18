@@ -1,0 +1,17 @@
+<svg width="300" height="100" viewBox="0 0 300 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Rounded square icon -->
+  <rect x="0" y="10" width="80" height="80" rx="16" fill="#0D1B2A"/>
+  
+  <!-- Checkmark 1 -->
+  <path d="M20 35 L30 45 L45 25" stroke="#FFFFFF" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Checkmark 2 -->
+  <path d="M20 60 L30 70 L45 50" stroke="#FFFFFF" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Ball symbol (simplified) -->
+  <circle cx="60" cy="60" r="10" stroke="#FFFFFF" stroke-width="3" fill="none"/>
+  <path d="M50 60 Q60 50, 70 60 Q60 70, 50 60" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+  
+  <!-- Text 'Multi-Bet' in white -->
+  <text x="90" y="65" font-family="Arial, Helvetica, sans-serif" font-size="32" fill="#FFFFFF" font-weight="bold">Multi-Bet</text>
+</svg>

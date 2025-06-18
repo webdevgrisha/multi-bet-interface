@@ -1,0 +1,21 @@
+.toggleBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+
+    width: 3.25rem;
+    height: 3.25rem;
+    color: rgb(213, 220, 235);
+    stroke: currentColor;
+    fill: currentColor;
+
+    transition: all 0.4s;
+
+    cursor: inherit;
+}
+
+.toggleBtn--rotated {
+    transform: rotate(180deg);
+}

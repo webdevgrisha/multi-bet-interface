@@ -1,0 +1,28 @@
+.betSipWrapper {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    position: relative;
+    width: 370px;
+    height: 100%;
+
+    z-index: 2;
+
+    background-color: rgb(15, 33, 46);
+    filter: drop-shadow(0 0 5px rgba(25, 25, 25, .25));
+    margin-left: auto;
+
+}
+
+
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    padding: 1rem;
+
+    overflow-y: auto;
+}

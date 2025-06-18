@@ -1,0 +1,109 @@
+.betsWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-start;
+    gap: 0.75rem;
+
+    position: relative;
+
+    width: 100%;
+    /* height: 100%; */
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    scrollbar-width: thin;
+    scrollbar-color: #2f4553 transparent;
+}
+
+.blurOverlay {
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(1px);
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.messageWrapper {
+    height: 100%;
+}
+
+.emptyBitsList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+
+    height: 100%;
+
+    font-size: 0.875rem;
+}
+
+.iconWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 5rem;
+    height: 5rem;
+
+
+    color: #263742;
+
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+}
+
+.infoText {
+    color: rgb(177, 186, 211);
+    line-height: 1.5;
+    font-weight: 450;
+}
+
+.bettingNow {
+    color: #fff;
+    text-decoration: none;
+    line-height: 1;
+    font-weight: 600;
+}
+
+.successMessage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+
+    height: 100%;
+    font-size: 0.875rem;
+}
+
+.successMessage .iconWrapper {
+    width: 5rem;
+    height: 5rem;
+
+    color: rgba(76, 175, 80, 0.6);
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+}
+
+.successMessage .infoText {
+    color: rgb(177, 186, 211);
+    line-height: 1.5;
+    font-weight: 450;
+}
+
+.successMessage .checkBets {
+    color: #fff;
+    text-decoration: none;
+    line-height: 1;
+    font-weight: 600;
+}

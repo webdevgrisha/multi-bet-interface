@@ -1,0 +1,3 @@
+interface AdditionalMatchInfo {
+    groupName: 
+}

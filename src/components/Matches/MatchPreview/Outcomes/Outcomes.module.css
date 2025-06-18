@@ -1,0 +1,34 @@
+.outcomesPart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+}
+
+.outcomesBtnWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.outcomeType {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+
+    padding: 0.5rem;
+
+    font-size: 0.75rem;
+    font-weight: 400;
+
+    color: rgb(177, 186, 211);
+    line-height: 1.5;
+
+}
+

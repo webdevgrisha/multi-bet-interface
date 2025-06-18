@@ -1,0 +1,25 @@
+.summaryRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.rowTitle {
+    color: rgb(177, 186, 211);
+    font-weight: 500;
+}
+
+.rowResult {
+    max-width: 100px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.rowResult::first-letter {
+    color: rgb(255, 157, 0);
+    font-weight: 600;
+}

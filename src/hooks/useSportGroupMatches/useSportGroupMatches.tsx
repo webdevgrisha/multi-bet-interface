@@ -34,11 +34,11 @@ function useSportGroupMatches() {
   }, []);
 
   const hasMore = React.useMemo(() => {
-    return hasMoreMatchesHelper(visibleMatchCount, data?.[0].sports);
+    return hasMoreMatchesHelper(visibleMatchCount, data?.[0]?.sports);
   }, [data, visibleMatchCount]);
 
   const processedSportsArr: Sport[] | undefined = React.useMemo(() => {
-    return showOnlyVisibleMatches(visibleMatchCount, data?.[0].sports);
+    return showOnlyVisibleMatches(visibleMatchCount, data?.[0]?.sports);
   }, [visibleMatchCount, data]);
 
   let sportsData: SportGroup | undefined = data?.[0];

@@ -22,6 +22,8 @@ import {
   updatePendingBetHelper,
   updatePendingBetsStorage,
 } from "./helperFunctions";
+import { useActiveBets } from "../useActiveBets/useActiveBets";
+import { useBalanceContext } from "../../context/BalanceContext/useBalanceContext";
 
 function usePendingBets() {
   const [pendingBets, setPendingBets] = React.useState<PendingBets>(
@@ -144,6 +146,9 @@ function usePendingBets() {
     [submitPendingBetsError]
   );
 
+  const { updateActiveBets } = useActiveBets();
+  const { balance, updateBalance } = useBalanceContext();
+
   const submitPendingBets = React.useCallback(
     async (isTermsAccepted: boolean): Promise<void> => {
       setSubmitPendingBetsStatus("loading");
@@ -167,7 +172,13 @@ function usePendingBets() {
       }
 
       try {
-        await submitPendingBetToServer(pendingBets);
+        const newActiveBets = await submitPendingBetToServer(pendingBets);
+
+        updateActiveBets(newActiveBets);
+
+        const newBalanceValue = balance - Number(totalStakeAmount);
+        updateBalance(newBalanceValue);
+
         setSubmitPendingBetsError(null);
         setSubmitPendingBetsStatus("success");
         clearAllPendingBets();
@@ -180,7 +191,16 @@ function usePendingBets() {
         setSubmitPendingBetsStatus("error");
       }
     },
-    [pendingBets, pendingBetsCount, hasAnyPendingBetError, clearAllPendingBets]
+    [
+      pendingBetsCount,
+      hasAnyPendingBetError,
+      pendingBets,
+      updateActiveBets,
+      balance,
+      totalStakeAmount,
+      updateBalance,
+      clearAllPendingBets,
+    ]
   );
 
   return {

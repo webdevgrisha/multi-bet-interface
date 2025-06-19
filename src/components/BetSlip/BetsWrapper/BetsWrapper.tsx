@@ -1,11 +1,12 @@
 import styles from "./BetsWrapper.module.css";
-import { useBetContext } from "../../../context/BetContext/useBetContext";
+import { usePendingBetsContext } from "../../../context/PendingBetsContext/usePendingBetsContext";
 import { SVG_DollarBill, SVG_Success } from "../../../assets";
 import { BetCard } from "./BetCard/BetCard";
 import type { PendingBets } from "../../../types/interfaces";
 import type { JSX } from "react";
 import classNames from "classnames";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router";
 
 function EmptyBetList() {
   const wrapperClass = classNames({
@@ -21,9 +22,9 @@ function EmptyBetList() {
         </div>
         <span className={styles.infoText}>Bet Slip is Empty</span>
         {/* TODO: make a link */}
-        <a href="#" className={styles.bettingNow}>
+        <Link to="/" className={styles.bettingNow}>
           Start Betting Now!
-        </a>
+        </Link>
       </div>
     </div>
   );
@@ -42,9 +43,9 @@ function SuccessSubmitMessage() {
           <SVG_Success />
         </div>
         <span className={styles.infoText}>Bets submitted successfully!</span>
-        <a href="#" className={styles.checkBets}>
+        <Link to="/my-bets" className={styles.checkBets}>
           Check your bets list!
-        </a>
+        </Link>
       </div>
     </div>
   );
@@ -75,7 +76,7 @@ function renderBetCardArr(pendingBets: PendingBets): JSX.Element[] {
 
 function BetsWrapper() {
   const { pendingBets, pendingBetsCount, submitPendingBetsStatus } =
-    useBetContext();
+    usePendingBetsContext();
 
   if (submitPendingBetsStatus === "success") return <SuccessSubmitMessage />;
   if (pendingBetsCount === 0) return <EmptyBetList />;

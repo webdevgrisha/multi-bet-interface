@@ -1,9 +1,9 @@
 import { SVG_Clear } from "../../../assets";
-import { useBetContext } from "../../../context/BetContext/useBetContext";
+import { usePendingBetsContext } from "../../../context/PendingBetsContext/usePendingBetsContext";
 import styles from "./ClearAllPendingBets.module.css";
 
 function ClearAllPendingBets() {
-  const { clearAllPendingBets } = useBetContext();
+  const { clearAllPendingBets } = usePendingBetsContext();
 
   return (
     <div className={styles.clearAllWrapper}>

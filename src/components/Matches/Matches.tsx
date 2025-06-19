@@ -10,6 +10,8 @@ import type {
   MatchFullInfo,
 } from "../../types/interfaces";
 import type { MatchType } from "../../types/types";
+import { MatchesError } from "./MatchesError/MatchesError";
+import { MatchesEmpty } from "./MatchesEmpty/MatchesEmpty";
 
 function MatchWrapperLoader() {
   return (
@@ -24,7 +26,6 @@ function Matches() {
     useSportContext();
   const observerRef = React.useRef(null);
 
-  //   стоит ли вынести в customHook
   React.useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -54,11 +55,19 @@ function Matches() {
   if (isLoading) return <MatchWrapperLoader />;
 
   if (error) {
-    return <h2>Sorry there is was error when we load matches</h2>;
+    return (
+      <section className={styles.matchesWrapper}>
+        <MatchesError />
+      </section>
+    );
   }
 
   if (sportsData === undefined) {
-    return <h2>No matches for this sport</h2>;
+    return (
+      <section className={styles.matchesWrapper}>
+        <MatchesEmpty />
+      </section>
+    );
   }
 
   const sportsArr = sportsData.sports;

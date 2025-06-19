@@ -1,4 +1,4 @@
-import { useBetContext } from "../../../context/BetContext/useBetContext";
+import { usePendingBetsContext } from "../../../context/PendingBetsContext/usePendingBetsContext";
 import styles from "./BetSlipFooter.module.css";
 import { SummaryRow } from "./SummaryRow/SummaryRow";
 import classNames from "classnames";
@@ -12,7 +12,7 @@ function BetSlipFooter() {
     submitPendingBetsStatus,
     termsAccepted,
     handleTermsAcceptanceChange,
-  } = useBetContext();
+  } = usePendingBetsContext();
 
   const handleSubmit = async () => {
     await submitPendingBets(termsAccepted);

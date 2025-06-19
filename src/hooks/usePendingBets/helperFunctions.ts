@@ -1,5 +1,5 @@
 import { BASE_URL } from "../../config/constants";
-import type { Match, Outcome, PendingBetInfo, PendingBets, PendingBetSearchData, PendingBetsErrors, PendingBetUpdateData, PlacedBet } from "../../types/interfaces";
+import type { ActiveBetInfo, Match, Outcome, PendingBetInfo, PendingBets, PendingBetSearchData, PendingBetsErrors, PendingBetUpdateData } from "../../types/interfaces";
 import type { BetToSubmit } from "../../types/types";
 import { postData } from "../../utils/postData";
 import { findBetIndex } from "./utils";
@@ -149,12 +149,12 @@ async function submitPendingBetToServer(pendingBets: PendingBets) {
     })
 
     const promiseArr = betToSubmitArr.map((betToSubmit) => {
-        return postData<BetToSubmit, PlacedBet>(url, betToSubmit)
+        return postData<BetToSubmit, ActiveBetInfo>(url, betToSubmit)
     });
 
-    const placedBetArr: PlacedBet[] = await Promise.all(promiseArr);
+    const activeBetArr: ActiveBetInfo[] = await Promise.all(promiseArr);
 
-    return placedBetArr;
+    return activeBetArr;
 }
 
 

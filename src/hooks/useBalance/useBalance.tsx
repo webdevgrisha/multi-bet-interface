@@ -9,7 +9,7 @@ import { BALANCE_INIT_VALUE } from "../../config/constants";
 function useBalance() {
   const [balance, setBalance] = React.useState<number>(initUserBalance);
 
-  const handleUpdateBalance = React.useCallback((balance: number) => {
+  const updateBalance = React.useCallback((balance: number) => {
     validateNewBalanceValue(balance);
 
     updateBalanceInStorage(balance);
@@ -22,7 +22,7 @@ function useBalance() {
     setBalance(BALANCE_INIT_VALUE);
   }, []);
 
-  return { balance, handleUpdateBalance, resetBalanceToInitValue };
+  return { balance, updateBalance, resetBalanceToInitValue };
 }
 
 export { useBalance };

@@ -1,0 +1,34 @@
+.errorWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5rem;
+}
+
+.errorBox {
+    text-align: center;
+    max-width: 400px;
+    padding: 1.5rem;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #f0f0f0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.errorIcon {
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+    color: #ccc;
+}
+
+.errorTitle {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    color: #ffffff;
+}
+
+.errorMessage {
+    font-size: 0.95rem;
+    color: #d0d0d0;
+}

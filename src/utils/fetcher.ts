@@ -7,6 +7,8 @@ async function fetcher<T>(url: string): Promise<T> {
 
     await delay(1000);
 
+    // throw new Error();
+    // return [] as T;
     return json;
 }
 

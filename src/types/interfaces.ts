@@ -68,7 +68,7 @@ interface PendingBetsErrors {
     [key: PendingBetInfo["betId"]]: string | null;
 }
 
-interface PlacedBet {
+interface ActiveBetInfo {
     id: string;
     matchId: Match["id"];
     betTeamName: Outcome["name"];
@@ -93,5 +93,5 @@ export type {
     PendingBetUpdateData,
     PendingBets,
     PendingBetsErrors,
-    PlacedBet,
+    ActiveBetInfo,
 }

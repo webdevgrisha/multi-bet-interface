@@ -5,7 +5,7 @@ import classNames from "classnames";
 import React from "react";
 import { Outcomes } from "./Outcomes/Outcomes";
 import { ToggleArrowBtn } from "../../ToggleArrowBtn/ToggleArrowBtn";
-import { useBetContext } from "../../../context/BetContext/useBetContext";
+import { usePendingBetsContext } from "../../../context/PendingBetsContext/usePendingBetsContext";
 
 interface MatchProps {
   matchFullInfo: MatchFullInfo;
@@ -14,7 +14,7 @@ interface MatchProps {
 
 function MatchPreview({ matchFullInfo, showLines = true }: MatchProps) {
   const [isShowBetConfig, setShowBetConfig] = React.useState<boolean>(false);
-  const { isMatchHasPendingBets } = useBetContext();
+  const { isMatchHasPendingBets } = usePendingBetsContext();
   const { id: matchId, commenceTime, homeTeam, awayTeam } = matchFullInfo.match;
 
   const date = new Date(commenceTime);

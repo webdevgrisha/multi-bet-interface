@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useBetContext } from "../../../../../context/BetContext/useBetContext";
+import { usePendingBetsContext } from "../../../../../context/PendingBetsContext/usePendingBetsContext";
 import type {
   Match,
   MatchAdditionalInfo,
@@ -19,7 +19,8 @@ function OutcomeBtn({
   outcome,
   matchAdditionalInfo,
 }: OutcomeBtnProps) {
-  const { isPendingBet, addPendingBet, removePendingBet } = useBetContext();
+  const { isPendingBet, addPendingBet, removePendingBet } =
+    usePendingBetsContext();
 
   const { name, price } = outcome;
   const isActive = isPendingBet({ matchId, betTeamName: name });

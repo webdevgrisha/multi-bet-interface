@@ -1,10 +1,14 @@
 import styles from "./BetSlipHeader.module.css";
 import Tippy from "@tippyjs/react";
 import { SVG_Bill, SVG_Close } from "../../../assets";
-import { useBetContext } from "../../../context/BetContext/useBetContext";
+import { usePendingBetsContext } from "../../../context/PendingBetsContext/usePendingBetsContext";
 
-function BetSlipHeader() {
-  const { pendingBetsCount } = useBetContext();
+interface BetSlipHeaderProps {
+  onClose: () => void;
+}
+
+function BetSlipHeader({ onClose }: BetSlipHeaderProps) {
+  const { pendingBetsCount } = usePendingBetsContext();
 
   return (
     <header className={styles.header}>
@@ -16,7 +20,7 @@ function BetSlipHeader() {
         <span className={styles.pendingBetsCount}>{pendingBetsCount}</span>
       </div>
       <Tippy content="Collapse sidebar" placement="bottom">
-        <button className={styles.closeBtn}>
+        <button className={styles.closeBtn} onClick={onClose}>
           <SVG_Close />
         </button>
       </Tippy>

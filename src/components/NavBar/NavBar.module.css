@@ -1,0 +1,92 @@
+.navBarWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    max-width: 1200px;
+    width: 100%;
+
+    padding: 0 3vw;
+}
+
+.navBarContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 5px;
+
+    border-radius: 3rem;
+    padding: 5px;
+
+    background-color: rgb(15, 33, 46);
+}
+
+.navItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+
+    padding: 0.9375rem 1.25rem;
+
+    border-radius: 3.40282e38px;
+
+    color: #b1bad3;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+
+    background-color: transparent;
+    text-decoration: none;
+    cursor: pointer;
+
+    transition: all cubic-bezier(.4, 0, .2, 1) 0.15s;
+}
+
+.navItem:hover {
+    color: #fff;
+    background-color: #2f4553;
+}
+
+.active {
+    color: #fff;
+    background-color: #2f4553;
+}
+
+.navItem.active .navIconWrapper {
+    color: #fff;
+}
+
+.navIconWrapper {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 1.25em;
+    height: 1.25em;
+
+    color: #b1bad3;
+
+    pointer-events: none;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+}
+
+.navIconWrapper svg {
+    transition: all cubic-bezier(.4, 0, .2, 1) 0.15s;
+}
+
+.navItem:hover .navIconWrapper {
+    color: #fff;
+}

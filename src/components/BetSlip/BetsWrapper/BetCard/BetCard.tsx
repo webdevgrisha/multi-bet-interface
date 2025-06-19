@@ -1,7 +1,7 @@
 import styles from "./BetCard.module.css";
 import type { PendingBetInfo } from "../../../../types/interfaces";
 import { SVG_Close } from "../../../../assets";
-import { useBetContext } from "../../../../context/BetContext/useBetContext";
+import { usePendingBetsContext } from "../../../../context/PendingBetsContext/usePendingBetsContext";
 import React from "react";
 import classNames from "classnames";
 import { BetCardError } from "./BetCardError/BetCardError";
@@ -32,7 +32,7 @@ function BetCard({ betInfo }: BetCardProps) {
     setPendingBetError,
     getPendingBetErrorByBetId,
     submitPendingBetsStatus,
-  } = useBetContext();
+  } = usePendingBetsContext();
   const { balance } = useBalanceContext();
 
   const [stakeAmountValue, setStakeAmountValue] = React.useState<string>(

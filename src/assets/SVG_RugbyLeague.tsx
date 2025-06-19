@@ -2,11 +2,10 @@ const SVG_RugbyLeague = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
-    // fill="#000000"
     version="1.1"
     id="Capa_1"
-    width="800px"
-    height="800px"
+    width="100%"
+    height="100%"
     viewBox="0 0 485.743 485.742"
     xmlSpace="preserve"
   >

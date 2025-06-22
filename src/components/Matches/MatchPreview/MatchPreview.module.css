@@ -1,9 +1,14 @@
-.container {
+.matchContainer {
+    container-type: inline-size;
+    container-name: match;
+}
+
+.matchPreview {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0;
 
     position: relative;
 }
@@ -39,6 +44,7 @@
 
     width: 100%;
     min-height: 100%;
+    min-width: 0;
 }
 
 .time {
@@ -80,9 +86,28 @@
     align-items: center;
     height: 100%;
 
-    padding: 2rem 0rem 0 2rem;
+    padding-top: 2.25rem;
+    /* padding: 2rem 0rem 0 2rem; */
 }
 
 .toggleBtnWrapperHidden {
     opacity: 0;
+}
+
+@container match (max-width: 650px) {
+    .matchPreview {
+        flex-direction: column;
+        gap: 0;
+
+        padding: 0.75rem 0;
+        border-bottom: 2px solid rgb(47, 69, 83);
+    }
+
+    .noBorder {
+        border-bottom: none;
+    }
+
+    .line {
+        display: none;
+    }
 }

@@ -23,3 +23,8 @@
     color: rgb(255, 157, 0);
     font-weight: 600;
 }
+
+.rowResult {
+     text-align: right;
+    font-variant-numeric: tabular-nums;
+}

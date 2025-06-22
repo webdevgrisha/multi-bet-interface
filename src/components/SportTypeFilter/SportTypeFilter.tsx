@@ -1,9 +1,9 @@
 import styles from "./SportTypeFilter.module.css";
-import { sportIcons } from "./sportIcons";
+import { sportIcons } from "../../config/sportIcons";
 import { useSportsMatchesStatistic } from "../../hooks";
 import type { GroupName } from "../../types/types";
 import { SportFilterItem } from "./SportFilterItem/SportFilterItem";
-import { useSportContext } from "../../context/SportContext/useSportContext";
+import { useSportContext } from "../../contexts/SportContext/useSportContext";
 
 function SportTypeFilter() {
   const { statisticBySportGroup } = useSportsMatchesStatistic();

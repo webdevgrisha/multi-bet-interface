@@ -1,5 +1,5 @@
 import { SVG_Clear } from "../../../assets";
-import { usePendingBetsContext } from "../../../context/PendingBetsContext/usePendingBetsContext";
+import { usePendingBetsContext } from "../../../contexts/PendingBetsContext/usePendingBetsContext";
 import styles from "./ClearAllPendingBets.module.css";
 
 function ClearAllPendingBets() {

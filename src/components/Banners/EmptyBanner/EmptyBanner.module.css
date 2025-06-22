@@ -1,0 +1,13 @@
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 5rem;
+    height: 5rem;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+
+    color: #334552;
+}

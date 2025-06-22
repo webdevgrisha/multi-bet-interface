@@ -5,11 +5,12 @@
     align-items: center;
 
     width: 100%;
+    min-width: 0;
 }
 
 .outcomesBtnWrapper {
     display: flex;
-    justify-content: center;
+    justify-content: stretch;
     align-items: center;
     gap: 0.5rem;
     width: 100%;
@@ -32,3 +33,9 @@
 
 }
 
+
+@media (max-width: 300px) {
+    .outcomesBtnWrapper {
+        flex-direction: column;
+    }
+}

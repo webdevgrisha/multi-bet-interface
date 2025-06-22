@@ -1,4 +1,4 @@
-import { usePendingBetsContext } from "../../../context/PendingBetsContext/usePendingBetsContext";
+import { usePendingBetsContext } from "../../../contexts/PendingBetsContext/usePendingBetsContext";
 import styles from "./BetSlipFooter.module.css";
 import { SummaryRow } from "./SummaryRow/SummaryRow";
 import classNames from "classnames";
@@ -26,6 +26,7 @@ function BetSlipFooter() {
   });
 
   const isLoading = submitPendingBetsStatus === "loading";
+  const isError = submitPendingBetsStatus === "error";
 
   const submitBtnText = isLoading ? "Submitting" : "Submit Bets";
 
@@ -49,7 +50,7 @@ function BetSlipFooter() {
           I accept the Terms & Conditions
         </label>
       </div>
-      {submitPendingBetsError && (
+      {isError && (
         <div className={styles.submitError}>{submitPendingBetsError}</div>
       )}
       <button

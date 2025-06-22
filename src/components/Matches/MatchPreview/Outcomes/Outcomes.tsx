@@ -1,8 +1,4 @@
-import type {
-  Match,
-  MatchAdditionalInfo,
-  Outcome,
-} from "../../../../types/interfaces";
+import type { Match, MatchAdditionalInfo } from "../../../../types/interfaces";
 import { OutcomeBtn } from "./OutcomeBtn/OutcomeBtn";
 import styles from "./Outcomes.module.css";
 
@@ -14,13 +10,13 @@ interface OutcomesProps {
 function Outcomes({ match, matchAdditionalInfo }: OutcomesProps) {
   const { homeTeam, awayTeam, outcomes } = match;
 
-  const homeTeamOutcomeObj: Outcome = outcomes.find(
+  const homeTeamOutcomeIndex: number = outcomes.findIndex(
     (outcomeInfo) => outcomeInfo.name === homeTeam
   )!;
-  const awayTeamOutcomeObj: Outcome = outcomes.find(
+  const awayTeamOutcomeIndex: number = outcomes.findIndex(
     (outcomeInfo) => outcomeInfo.name === awayTeam
   )!;
-  const drawOutcomeObj: Outcome | undefined = outcomes.find(
+  const drawOutcomeIndex: number = outcomes.findIndex(
     (outcomeInfo) => outcomeInfo.name === "Draw"
   );
 
@@ -31,20 +27,20 @@ function Outcomes({ match, matchAdditionalInfo }: OutcomesProps) {
       </span>
       <div className={styles.outcomesBtnWrapper}>
         <OutcomeBtn
-          matchId={match.id}
-          outcome={homeTeamOutcomeObj}
+          match={match}
+          outcomeIndex={homeTeamOutcomeIndex}
           matchAdditionalInfo={matchAdditionalInfo}
         />
-        {drawOutcomeObj && (
+        {drawOutcomeIndex !== -1 && (
           <OutcomeBtn
-            matchId={match.id}
-            outcome={drawOutcomeObj}
+            match={match}
+            outcomeIndex={drawOutcomeIndex}
             matchAdditionalInfo={matchAdditionalInfo}
           />
         )}
         <OutcomeBtn
-          matchId={match.id}
-          outcome={awayTeamOutcomeObj}
+          match={match}
+          outcomeIndex={awayTeamOutcomeIndex}
           matchAdditionalInfo={matchAdditionalInfo}
         />
       </div>

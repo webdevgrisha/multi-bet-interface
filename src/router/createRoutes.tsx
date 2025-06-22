@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router";
-import { BetsLayout, MyBetsLayout, RootLayout } from "../layouts";
+import { BetsLayout, ActiveBetsLayout, RootLayout } from "../layouts";
 
 const router = createBrowserRouter([
   {
@@ -7,7 +7,7 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       { index: true, element: <BetsLayout /> },
-      { path: "my-bets", element: <MyBetsLayout /> },
+      { path: "my-bets", element: <ActiveBetsLayout /> },
     ],
   },
 ]);

@@ -17,8 +17,6 @@ interface MatchAdditionalInfo {
     groupName: GroupName;
     sportName: Sport["name"];
     sportDescription: Sport["description"];
-    homeTeam: Match["homeTeam"],
-    awayTeam: Match["awayTeam"],
     matchType: MatchType,
 }
 
@@ -42,20 +40,22 @@ interface SportGroup {
 interface PendingBetInfo extends MatchAdditionalInfo {
     betId: string;
     matchId: Match["id"];
-    betTeamName: Outcome["name"];
-    price: number;
-    stakeAmount: number;
-    estPayout: number;
+    commenceTime: Match["commenceTime"];
     homeTeam: Match["homeTeam"];
     awayTeam: Match["awayTeam"];
+    betTeamName: Outcome["name"];
+    price: Outcome["price"];
+    stakeAmount: number;
+    estPayout: number;
 }
 
 interface PendingBetSearchData {
     matchId: PendingBetInfo["matchId"];
-    betTeamName: PendingBetInfo["betTeamName"];
+    betId: PendingBetInfo["betId"];
 }
 
 interface PendingBetUpdateData {
+    currentStakeAmount: number;
     stakeAmount: number;
     estPayout: number;
 }
@@ -71,12 +71,15 @@ interface PendingBetsErrors {
 interface ActiveBetInfo {
     id: string;
     matchId: Match["id"];
+    groupName: GroupName;
     betTeamName: Outcome["name"];
     price: number;
     stakeAmount: number;
     estPayout: number;
+    commenceTime: Match["commenceTime"];
     homeTeam: Match["homeTeam"];
     awayTeam: Match["awayTeam"];
+    matchType: MatchType,
     createdAt: ISOString;
     status: BetStatus;
 }

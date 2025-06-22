@@ -1,0 +1,43 @@
+.bannerWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+
+    height: 100%;
+
+    font-size: 0.875rem;
+}
+
+.iconWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+}
+
+.infoText {
+    color: rgb(177, 186, 211);
+    line-height: 1.5;
+    font-weight: 450;
+    font-size: 1rem;
+}
+
+.link {
+    color: #fff;
+    text-decoration: none;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 0.9rem;
+}

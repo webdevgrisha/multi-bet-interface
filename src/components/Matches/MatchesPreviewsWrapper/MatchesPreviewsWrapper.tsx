@@ -1,0 +1,125 @@
+import classNames from "classnames";
+import { useSportContext } from "../../../contexts/SportContext/useSportContext";
+import { Loader } from "../../Loaders/WobblingLoader/WobblingLoader";
+import { MatchPreview } from "../MatchPreview/MatchPreview";
+import { SportAccordion } from "../../SportAccordion/SportAccordion";
+import styles from "./MatchesPreviewsWrapper.module.css";
+import React from "react";
+import type {
+  MatchAdditionalInfo,
+  MatchFullInfo,
+} from "../../../types/interfaces";
+import type { MatchType } from "../../../types/types";
+import { MatchesError } from "../MatchesError/MatchesError";
+import { MatchesEmpty } from "../MatchesEmpty/MatchesEmpty";
+
+function MatchWrapperLoader() {
+  return (
+    <section className={classNames(styles.matchesWrapper, styles.loaderMargin)}>
+      <Loader />
+    </section>
+  );
+}
+
+function Matches() {
+  const { selectedSport, sportsData, error, isLoading, loadMore, hasMore } =
+    useSportContext();
+  const observerRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && hasMore) {
+          loadMore();
+        }
+      },
+      {
+        root: null,
+        rootMargin: "300px",
+      }
+    );
+
+    const currentObserveElem = observerRef.current;
+
+    if (currentObserveElem !== null) {
+      observer.observe(currentObserveElem);
+    }
+
+    return () => {
+      if (currentObserveElem !== null) {
+        observer.unobserve(currentObserveElem);
+      }
+    };
+  }, [hasMore, loadMore]);
+
+  if (isLoading) return <MatchWrapperLoader />;
+
+  if (error) {
+    return (
+      <section className={styles.matchesWrapper}>
+        <MatchesError />
+      </section>
+    );
+  }
+
+  if (sportsData === undefined) {
+    return (
+      <section className={styles.matchesWrapper}>
+        <MatchesEmpty />
+      </section>
+    );
+  }
+
+  const sportsArr = sportsData.sports;
+
+  return (
+    <div className={styles.matchesWrapper}>
+      {sportsArr.map((sport) => {
+        const { key, name, description, matches } = sport;
+
+        if (matches.length === 0) return;
+
+        return (
+          <SportAccordion
+            key={key}
+            sportName={name}
+            description={description}
+            matchCount={matches.length}
+          >
+            {matches.map((match, index) => {
+              const matchType: MatchType =
+                match.outcomes.length === 2 ? "Winner" : "1x2";
+
+              const additionalInfo: MatchAdditionalInfo = {
+                groupName: selectedSport,
+                sportName: name,
+                sportDescription: description,
+                matchType,
+              };
+
+              const matchFullInfo: MatchFullInfo = {
+                match: match,
+                additionalInfo,
+              };
+
+              const isLast = index === matches.length - 1;
+
+              return (
+                <MatchPreview
+                  key={match.id}
+                  matchFullInfo={matchFullInfo}
+                  showLines={index !== 0}
+                  isLast={isLast}
+                />
+              );
+            })}
+          </SportAccordion>
+        );
+      })}
+
+      <div ref={observerRef} className={styles.paginationTrigger}></div>
+    </div>
+  );
+}
+
+export { Matches };

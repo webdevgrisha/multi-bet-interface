@@ -1,0 +1,106 @@
+.navBarWrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    display: none;
+    justify-content: space-around;
+    align-items: center;
+    flex-shrink: 0;
+
+    width: 100%;
+    height: 70px;
+
+    padding: 0 3vw;
+
+    color: #fff;
+
+    background-color: rgb(15, 33, 46);
+    box-shadow: 0 -4px 6px -1px #0003;
+}
+
+.navItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+
+    height: 100%;
+
+    color: inherit;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+
+    background-color: transparent;
+    text-decoration: none;
+    cursor: pointer;
+
+    transition: all cubic-bezier(.4, 0, .2, 1) 0.15s;
+}
+
+.active::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    min-height: 4px;
+    width: 100%;
+    background-color: rgb(67, 145, 231);
+}
+
+.navItem.active .navIconWrapper {
+    color: #fff;
+}
+
+.navIconWrapper {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 1.75em;
+    height: 1.75em;
+
+    color: #b1bad3;
+
+    pointer-events: none;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+}
+
+.navIconWrapper svg {
+    transition: all cubic-bezier(.4, 0, .2, 1) 0.15s;
+}
+
+.navItem:hover .navIconWrapper {
+    color: #fff;
+}
+
+.count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    right: 0px;
+
+    padding: 0 0.5em;
+    min-width: 1.7em;
+    border-radius: 2em;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: rgb(4, 23, 45);
+
+    background-color: rgb(67, 145, 231);
+}
+
+@media (max-width: 768px) {
+    .navBarWrapper {
+        display: flex;
+    }
+}

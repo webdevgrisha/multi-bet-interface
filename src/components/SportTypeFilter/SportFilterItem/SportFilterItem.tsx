@@ -19,8 +19,8 @@ function SportFilterItem({
   matchCount,
   children,
 }: SportFilterItemProps) {
-  const displayName =
-    groupName.length > 7 ? groupName.slice(0, 5) + "..." : groupName;
+  // const displayName =
+  //   groupName.length > 7 ? groupName.slice(0, 5) + "..." : groupName;
 
   const sportItemClassName = className({
     [styles.sportListItem]: true,
@@ -46,7 +46,7 @@ function SportFilterItem({
             <span className={matchCountClassNames}>{matchCount}</span>
           )}
           <div className={styles.iconWrapper}>{children}</div>
-          <span>{displayName}</span>
+          <span className={styles.sportName}>{groupName}</span>
         </button>
       </Tippy>
     </li>

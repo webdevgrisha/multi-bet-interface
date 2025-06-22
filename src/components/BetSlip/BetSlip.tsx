@@ -1,25 +1,45 @@
 import styles from "./BetSlip.module.css";
-import { BetsWrapper } from "./BetsWrapper/BetsWrapper";
+import { BetsWrapper } from "./BetsCardsWrapper/BetsCardsWrapper";
 import { ClearAllPendingBets } from "./ClearAllPendingBets/ClearAllPendingBets";
 import { BetSlipFooter } from "./BetSlipFooter/BetSlipFooter";
 import { BetSlipHeader } from "./BetSlipHeader/BetSlipHeader";
 import React from "react";
 import { SVG_Bill } from "../../assets";
-import { usePendingBetsContext } from "../../context/PendingBetsContext/usePendingBetsContext";
-import { motion, AnimatePresence } from "framer-motion";
+import { usePendingBetsContext } from "../../contexts/PendingBetsContext/usePendingBetsContext";
 import Tippy from "@tippyjs/react";
+import { useLocation, useNavigate } from "react-router";
 
 function BetSlip() {
   const { pendingBetsCount } = usePendingBetsContext();
   const [isOpen, setIsOpen] = React.useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   React.useEffect(() => {
-    if (pendingBetsCount > 0) {
+    const isTabOpen =
+      new URLSearchParams(location.search).get("tab") === "bet-slip";
+
+    setIsOpen(isTabOpen);
+  }, [location.search]);
+
+  React.useEffect(() => {
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+    if (!isMobile && pendingBetsCount > 0) {
       setIsOpen(true);
     }
   }, [pendingBetsCount]);
 
-  const handleClose = () => setIsOpen(false);
+  const handleClose = () => {
+    setIsOpen(false);
+
+    const params = new URLSearchParams(location.search);
+    params.delete("tab");
+    navigate(
+      { pathname: location.pathname, search: params.toString() },
+      { replace: true }
+    );
+  };
   const handleOpen = () => setIsOpen(true);
 
   if (!isOpen) {
@@ -40,23 +60,14 @@ function BetSlip() {
   }
 
   return (
-    <AnimatePresence>
-      <motion.section
-        className={styles.betSipWrapper}
-        initial={{ x: 400, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        exit={{ x: 400, opacity: 0 }}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        key="betslip"
-      >
-        <BetSlipHeader onClose={handleClose} />
-        <ClearAllPendingBets />
-        <div className={styles.content}>
-          <BetsWrapper />
-        </div>
-        <BetSlipFooter />
-      </motion.section>
-    </AnimatePresence>
+    <div className={styles.betSipWrapper}>
+      <BetSlipHeader onClose={handleClose} />
+      <ClearAllPendingBets />
+      <div className={styles.content}>
+        <BetsWrapper />
+      </div>
+      <BetSlipFooter />
+    </div>
   );
 }
 

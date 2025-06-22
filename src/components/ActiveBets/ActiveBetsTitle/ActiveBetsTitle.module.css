@@ -1,0 +1,55 @@
+.title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+
+    width: 100%;
+
+    font-size: 2rem;
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+
+    width: 2rem;
+    height: 2rem;
+
+}
+
+.count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 1.8em;
+    padding: 0 0.75rem;
+    border-radius: 2em;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.5;
+    white-space: nowrap;
+    color: rgb(4, 23, 45);
+    background-color: rgb(67, 145, 231);
+
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .icon {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .count {
+        font-size: 1rem;
+    }
+}

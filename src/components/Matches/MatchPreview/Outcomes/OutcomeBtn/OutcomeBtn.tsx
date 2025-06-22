@@ -1,29 +1,33 @@
 import classNames from "classnames";
-import { usePendingBetsContext } from "../../../../../context/PendingBetsContext/usePendingBetsContext";
+import { usePendingBetsContext } from "../../../../../contexts/PendingBetsContext/usePendingBetsContext";
 import type {
   Match,
   MatchAdditionalInfo,
-  Outcome,
   PendingBetInfo,
 } from "../../../../../types/interfaces";
 import styles from "./OutcomeBtn.module.css";
+import React from "react";
 
 interface OutcomeBtnProps {
-  matchId: Match["id"];
-  outcome: Outcome;
+  match: Match;
+  outcomeIndex: number;
   matchAdditionalInfo: MatchAdditionalInfo;
 }
 
 function OutcomeBtn({
-  matchId,
-  outcome,
+  match,
+  outcomeIndex,
   matchAdditionalInfo,
 }: OutcomeBtnProps) {
   const { isPendingBet, addPendingBet, removePendingBet } =
     usePendingBetsContext();
 
-  const { name, price } = outcome;
-  const isActive = isPendingBet({ matchId, betTeamName: name });
+  const { id: matchId, commenceTime, homeTeam, awayTeam, outcomes } = match;
+  const { name: betTeamName, price } = outcomes[outcomeIndex];
+
+  const betIdRef = React.useRef(`${matchId}-${betTeamName}`);
+
+  const isActive = isPendingBet({ matchId, betId: betIdRef.current });
 
   const outcomeBtnClass = classNames({
     [styles.outcomeBtn]: true,
@@ -32,9 +36,12 @@ function OutcomeBtn({
 
   const handelAddBet = () => {
     const pendingBetInfo: PendingBetInfo = {
-      betId: crypto.randomUUID(),
+      betId: betIdRef.current,
       matchId,
-      betTeamName: name,
+      commenceTime,
+      homeTeam,
+      awayTeam,
+      betTeamName,
       price,
       stakeAmount: 0,
       estPayout: 0,
@@ -46,7 +53,7 @@ function OutcomeBtn({
 
   const handleBtnClick = () => {
     if (isActive) {
-      removePendingBet({ matchId, betTeamName: name });
+      removePendingBet({ matchId, betId: betIdRef.current });
     } else {
       handelAddBet();
     }
@@ -54,8 +61,8 @@ function OutcomeBtn({
 
   return (
     <button className={outcomeBtnClass} onClick={handleBtnClick}>
-      <span className={styles.outcomeTeamName}>{name}</span>
-      <span className={styles.outcomePrice}>{price}</span>
+      <span className={styles.outcomeTeamName}>{betTeamName}</span>
+      <span className={styles.outcomePrice}>{price.toFixed(2)}</span>
     </button>
   );
 }

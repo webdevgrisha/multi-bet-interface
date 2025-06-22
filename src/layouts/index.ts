@@ -1,9 +1,9 @@
 import { RootLayout } from "./RootLayout/RootLayout";
 import { BetsLayout } from "./BetsLayout/BetsLayout";
-import { MyBetsLayout } from "./MyBetsLayout/MyBetsLayout";
+import { ActiveBetsLayout } from "./ActiveBetsLayout/ActiveBetsLayout";
 
 export {
     RootLayout,
     BetsLayout,
-    MyBetsLayout
+    ActiveBetsLayout
 }

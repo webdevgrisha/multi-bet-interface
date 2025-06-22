@@ -1,7 +1,11 @@
 const BASE_URL = 'http://localhost:3001';
-const BALANCE_INIT_VALUE = 3000;
+const BALANCE_INIT_VALUE = 5000;
+const MIN_STAKE_AMOUNT = 1;
+const MAX_STAKE_AMOUNT = 1000;
 
 export {
     BASE_URL,
-    BALANCE_INIT_VALUE
+    BALANCE_INIT_VALUE,
+    MIN_STAKE_AMOUNT,
+    MAX_STAKE_AMOUNT
 }

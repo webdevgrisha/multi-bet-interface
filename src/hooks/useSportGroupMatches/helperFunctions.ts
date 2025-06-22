@@ -1,4 +1,4 @@
-import { sportIcons } from "../../components/SportTypeFilter/sportIcons";
+import { sportIcons } from "../../config/sportIcons";
 import { BASE_URL } from "../../config/constants";
 import type { Sport } from "../../types/interfaces";
 import type { GroupName } from "../../types/types";

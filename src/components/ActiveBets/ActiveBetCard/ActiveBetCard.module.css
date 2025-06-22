@@ -1,0 +1,165 @@
+.activeBetCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: calc(50% - 0.5rem);
+    border-radius: 0.25rem;
+    color: rgb(177, 186, 211);
+    font-size: 0.875rem;
+    overflow: hidden;
+    background-color: rgb(15, 33, 46);
+    box-shadow: 0 4px 6px -1px rgba(27, 23, 23, .2), 0 2px 4px -1px rgba(0, 0, 0, .1);
+
+    /* transition: transform 0.2s ease, box-shadow 0.2s ease; */
+}
+/* 
+.activeBetCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+} */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    color: #b1bad3;
+    background-color: rgb(47, 69, 83);
+
+    font-weight: 500;
+}
+
+.matchInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+
+    border-bottom: 2px solid rgb(47, 69, 83);
+}
+
+.teams {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    gap: 0.5rem;
+    overflow: hidden;
+}
+
+.iconWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+
+    cursor: pointer;
+
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.teams>span {
+    display: inline-block;
+    /* width: 100%; */
+    max-width: 100%;
+    align-items: center;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.matchType {
+    display: inline-flex;
+    font-size: 0.875rem;
+    font-weight: 400;
+    width: 100%;
+}
+
+.betInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    line-height: 1.5;
+    font-size: 0.875rem;
+}
+
+.betInfo span:first-child {
+    color: #fff;
+    font-weight: 650;
+}
+
+.betInfo span:last-child {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    color: rgb(67, 145, 231);
+    font-weight: 700;
+}
+
+.matchStart {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+
+    line-height: 1.5;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.stakeResult {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+
+    gap: 0.3rem;
+
+    padding: 0.5rem 0.75rem;
+}
+
+.resultRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 0.9rem;
+    line-height: 1.5;
+
+    color: #fff;
+    font-weight: 700;
+}
+
+
+.resultRow span:last-child::first-letter {
+    color: rgb(255, 157, 0);
+    font-weight: 600;
+}
+
+.resultRow span:last-child {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 700px) {
+    .activeBetCard {
+        max-width: 100%;
+        width: 100%;
+    }
+}

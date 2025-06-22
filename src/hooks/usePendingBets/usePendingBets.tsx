@@ -22,8 +22,9 @@ import {
   updatePendingBetHelper,
   updatePendingBetsStorage,
 } from "./helperFunctions";
-import { useActiveBets } from "../useActiveBets/useActiveBets";
-import { useBalanceContext } from "../../context/BalanceContext/useBalanceContext";
+import { useBalanceContext } from "../../contexts/BalanceContext/useBalanceContext";
+import { useActiveBetsContext } from "../../contexts/ActiveBetsContext/useActiveBetsContext";
+import { validateStakeValue } from "./utils";
 
 function usePendingBets() {
   const [pendingBets, setPendingBets] = React.useState<PendingBets>(
@@ -43,6 +44,21 @@ function usePendingBets() {
     "idle" | "loading" | "success" | "error"
   >("idle");
 
+  const { updateActiveBets } = useActiveBetsContext();
+
+  const { balance, updateBalance } = useBalanceContext();
+
+  // React.useEffect(() => {
+  //   if (
+  //     hasAnyPendingBetErrorHelper(pendingBetsErrors) &&
+  //     submitPendingBetsStatus === "error"
+  //   ) {
+  //     return;
+  //   }
+
+  //   setSubmitPendingBetsStatus("idle");
+  // }, [pendingBetsErrors, submitPendingBetsStatus]);
+
   const pendingBetsCount: number = React.useMemo(() => {
     return calculatePendingBetsCount(pendingBets);
   }, [pendingBets]);
@@ -59,20 +75,47 @@ function usePendingBets() {
     return hasAnyPendingBetErrorHelper(pendingBetsErrors);
   }, [pendingBetsErrors]);
 
-  const addPendingBet = React.useCallback((pendingBetInfo: PendingBetInfo) => {
-    const updatedPendingBetsObj = addPendingBetHelper(pendingBetInfo);
+  const setPendingBetError = React.useCallback(
+    (betId: PendingBetInfo["betId"], errorText: string | null): void => {
+      setPendingBetsErrors((prevPendingBetsErrors) => {
+        return { ...prevPendingBetsErrors, [betId]: errorText };
+      });
+    },
+    []
+  );
 
-    updatePendingBetsStorage(updatedPendingBetsObj);
-    setPendingBets(updatedPendingBetsObj);
+  const addPendingBet = React.useCallback(
+    (pendingBetInfo: PendingBetInfo) => {
+      const updatedPendingBetsObj = addPendingBetHelper(pendingBetInfo);
 
-    setSubmitPendingBetsStatus("idle");
-  }, []);
+      updatePendingBetsStorage(updatedPendingBetsObj);
+      setPendingBets(updatedPendingBetsObj);
+      setPendingBetError(
+        pendingBetInfo.betId,
+        "Stake must be between 1 and 1000"
+      );
+
+      setSubmitPendingBetsStatus("idle");
+    },
+    [setPendingBetError]
+  );
 
   const updatePendingBet = React.useCallback(
     (
       pendingBetSearchData: PendingBetSearchData,
       updatePendingBetData: PendingBetUpdateData
     ) => {
+      const validationError: string | null = validateStakeValue({
+        newStakeValue: updatePendingBetData.stakeAmount,
+        totalStakeAmount: Number(totalStakeAmount),
+        currentStakeAmount: updatePendingBetData.currentStakeAmount,
+        balance,
+      });
+
+      setPendingBetError(pendingBetSearchData.betId, validationError);
+
+      if (validationError) return null;
+
       const updatedPendingBetsObj = updatePendingBetHelper(
         pendingBetSearchData,
         updatePendingBetData
@@ -81,7 +124,7 @@ function usePendingBets() {
       updatePendingBetsStorage(updatedPendingBetsObj);
       setPendingBets(updatedPendingBetsObj);
     },
-    []
+    [balance, setPendingBetError, totalStakeAmount]
   );
 
   const removePendingBet = React.useCallback(
@@ -91,13 +134,16 @@ function usePendingBets() {
 
       updatePendingBetsStorage(updatedPendingBetsObj);
       setPendingBets(updatedPendingBetsObj);
+
+      setPendingBetError(pendingBetSearchData.betId, null);
     },
-    []
+    [setPendingBetError]
   );
 
   const clearAllPendingBets = React.useCallback(() => {
     updatePendingBetsStorage({});
     setPendingBets({});
+    setPendingBetsErrors({});
   }, []);
 
   const isMatchHasPendingBets = React.useCallback(
@@ -112,15 +158,6 @@ function usePendingBets() {
       return isPendingBetHelper({ ...pendingBetSearchData, pendingBets });
     },
     [pendingBets]
-  );
-
-  const setPendingBetError = React.useCallback(
-    (betId: PendingBetInfo["betId"], errorText: string | null): void => {
-      setPendingBetsErrors((prevPendingBetsErrors) => {
-        return { ...prevPendingBetsErrors, [betId]: errorText };
-      });
-    },
-    []
   );
 
   const getPendingBetErrorByBetId = React.useCallback(
@@ -146,9 +183,6 @@ function usePendingBets() {
     [submitPendingBetsError]
   );
 
-  const { updateActiveBets } = useActiveBets();
-  const { balance, updateBalance } = useBalanceContext();
-
   const submitPendingBets = React.useCallback(
     async (isTermsAccepted: boolean): Promise<void> => {
       setSubmitPendingBetsStatus("loading");
@@ -166,6 +200,7 @@ function usePendingBets() {
       }
 
       if (hasAnyPendingBetError) {
+        console.log("hasAnyPendingBetError: ", hasAnyPendingBetError);
         setSubmitPendingBetsError("Some bets have validation errors");
         setSubmitPendingBetsStatus("error");
         return;

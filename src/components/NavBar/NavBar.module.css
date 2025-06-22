@@ -90,3 +90,9 @@
 .navItem:hover .navIconWrapper {
     color: #fff;
 }
+
+@media (max-width: 768px) {
+    .navBarWrapper {
+        display: none;
+    }
+}

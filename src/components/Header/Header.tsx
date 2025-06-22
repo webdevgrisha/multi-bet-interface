@@ -1,9 +1,9 @@
 import styles from "./Header.module.css";
 import Tippy from "@tippyjs/react";
 import { SVG_Logo } from "../../assets";
-import { useBalanceContext } from "../../context/BalanceContext/useBalanceContext";
-import { useActiveBetsContext } from "../../context/ActiveBetsContext/useActiveBetsContext";
-import { usePendingBetsContext } from "../../context/PendingBetsContext/usePendingBetsContext";
+import { useBalanceContext } from "../../contexts/BalanceContext/useBalanceContext";
+import { useActiveBetsContext } from "../../contexts/ActiveBetsContext/useActiveBetsContext";
+import { usePendingBetsContext } from "../../contexts/PendingBetsContext/usePendingBetsContext";
 import React from "react";
 
 function Header() {
@@ -23,6 +23,7 @@ function Header() {
         <div className={styles.headerContent}>
           <div className={styles.logo}>
             <SVG_Logo />
+            <span className={styles.logoText}>Multi-Bet</span>
           </div>
 
           <div className={styles.balanceConfig}>

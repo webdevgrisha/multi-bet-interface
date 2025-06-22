@@ -13,9 +13,10 @@ import { SVG_Soccer } from './SVG_Soccer';
 import { SVG_Arrow } from './SVG_Arrow';
 import { SVG_Bill } from './SVG_Bill';
 import { SVG_Close } from './SVG_Close';
-import { SVG_DollarBill } from './SVG_DollarBiil';
+import { SVG_DollarBill } from './SVG_DollarBill';
 import { SVG_Clear } from './SVG_Clear';
 import { SVG_Success } from './SVG_Success';
+import { SVG_Active } from './SVG_Active';
 
 export {
     SVG_Logo,
@@ -35,5 +36,6 @@ export {
     SVG_Close,
     SVG_DollarBill,
     SVG_Clear,
-    SVG_Success
+    SVG_Success,
+    SVG_Active
 }

@@ -1,5 +1,5 @@
 import { BASE_URL } from "../../config/constants";
-import type { ActiveBetInfo, Match, Outcome, PendingBetInfo, PendingBets, PendingBetSearchData, PendingBetsErrors, PendingBetUpdateData } from "../../types/interfaces";
+import type { ActiveBetInfo, Match, PendingBetInfo, PendingBets, PendingBetSearchData, PendingBetsErrors, PendingBetUpdateData } from "../../types/interfaces";
 import type { BetToSubmit } from "../../types/types";
 import { postData } from "../../utils/postData";
 import { findBetIndex } from "./utils";
@@ -93,18 +93,18 @@ function removePendingBetHelper(pendingBetSearchData: PendingBetSearchData): Pen
 interface isPendingBetHelperProps {
     pendingBets: PendingBets;
     matchId: Match["id"];
-    betTeamName: Outcome["name"];
+    betId: PendingBetInfo["betId"];
 }
 
 function isPendingBetHelper(propsObj: isPendingBetHelperProps): boolean {
-    const { pendingBets, matchId, betTeamName } = propsObj;
+    const { pendingBets, matchId, betId } = propsObj;
 
     if (!(matchId in pendingBets)) return false;
 
     const betsInfoArr: PendingBetInfo[] = pendingBets[matchId];
 
     const isBetExist: boolean =
-        betsInfoArr.find((betInfo) => betInfo.betTeamName === betTeamName) !==
+        betsInfoArr.find((betInfo) => betInfo.betId === betId) !==
         undefined;
 
     return isBetExist;
@@ -122,7 +122,6 @@ function getPendingBetErrorByBetIdHelper(betId: PendingBetInfo["betId"], pending
     return pendingBetsErrors[betId] || null;
 }
 
-
 async function submitPendingBetToServer(pendingBets: PendingBets) {
     const url: string = `${BASE_URL}/bets`;
 
@@ -136,6 +135,7 @@ async function submitPendingBetToServer(pendingBets: PendingBets) {
                 estPayout: pendingBetsInfo.estPayout,
                 homeTeam: pendingBetsInfo.homeTeam,
                 awayTeam: pendingBetsInfo.awayTeam,
+                commenceTime: pendingBetsInfo.commenceTime,
                 betTeamName: pendingBetsInfo.betTeamName,
                 groupName: pendingBetsInfo.groupName,
                 sportName: pendingBetsInfo.sportName,

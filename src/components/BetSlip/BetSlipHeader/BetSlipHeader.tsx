@@ -1,7 +1,7 @@
 import styles from "./BetSlipHeader.module.css";
 import Tippy from "@tippyjs/react";
 import { SVG_Bill, SVG_Close } from "../../../assets";
-import { usePendingBetsContext } from "../../../context/PendingBetsContext/usePendingBetsContext";
+import { usePendingBetsContext } from "../../../contexts/PendingBetsContext/usePendingBetsContext";
 
 interface BetSlipHeaderProps {
   onClose: () => void;

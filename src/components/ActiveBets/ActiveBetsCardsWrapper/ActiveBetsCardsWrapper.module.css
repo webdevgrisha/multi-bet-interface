@@ -1,0 +1,50 @@
+.bannerWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.activeBetsWrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    width: 100%;
+    height: auto;
+
+    position: relative;
+    overflow-y: auto;
+}
+
+.title {
+    color: #fff;
+    line-height: 1.5;
+    font-size: 1.5rem;
+}
+
+.resultRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 0.9rem;
+    line-height: 1.5;
+
+    color: #fff;
+    font-weight: 700;
+}
+
+
+.resultRow span:last-child::first-letter {
+    color: rgb(255, 157, 0);
+    font-weight: 600;
+}
+
+.resultRow span:last-child {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}

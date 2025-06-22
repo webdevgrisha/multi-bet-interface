@@ -24,3 +24,25 @@
     list-style-type: none;
 }
 
+
+@media (max-width: 1300px) {
+    .sportMenuContainer {
+        position: relative;
+        overflow-x: auto;
+
+        mask-image: linear-gradient(to right,
+                black 0%,
+                black calc(100% - 2rem),
+                transparent 100%);
+        -webkit-mask-image: linear-gradient(to right,
+                black 0%,
+                black calc(100% - 2rem),
+                transparent 100%);
+    }
+}
+
+@media (max-width: 500px) {
+    .sportMenuList {
+        padding: 1.5rem 0.5rem 1rem 0.5rem;
+    }
+}
